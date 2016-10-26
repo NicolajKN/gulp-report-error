@@ -33,5 +33,5 @@ function errorReporter( error ) {
 	this.emit('end');
 };
 
-exports.reporter = errorReporter;
-exports.plumber = plumber({ errorHandler: errorReporter });
+exports.reporter = function() { return errorReporter; };
+exports.plumber = function() { return plumber({ errorHandler: errorReporter }); };
