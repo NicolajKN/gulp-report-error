@@ -1,7 +1,8 @@
-const notify = require( 'gulp-notify' );
-const gutil  = require( 'gulp-util' );
+const notify   = require( 'gulp-notify' );
+const gutil    = require( 'gulp-util' );
+const plumber  = require( 'gulp-plumber' );
 
-module.exports = function ( error ) {
+function errorReporter( error ) {
 	const lineNumber = ( error.lineNumber ) ? 'LINE ' + error.lineNumber + ' -- ' : '';
 
 	notify({
@@ -31,3 +32,6 @@ module.exports = function ( error ) {
 	// Prevent the 'watch' task from stopping
 	this.emit('end');
 };
+
+exports.reporter = errorReporter;
+exports.plumber = plumber({ errorHandler: errorReporter });
