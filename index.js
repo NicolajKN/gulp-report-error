@@ -2,11 +2,11 @@ const notify = require( 'gulp-notify' );
 const gutil  = require( 'gulp-util' );
 
 module.exports = function ( error ) {
-	const lineNumber = ( error.lineNumber ) ? ´LINE ${ error.lineNumber  } -- ´ : '';
+	const lineNumber = ( error.lineNumber ) ? 'LINE ' + error.lineNumber + ' -- ' : '';
 
 	notify({
-		title: ´Task Failed [${ error.plugin }]´,
-		message: ´${ lineNumber } See console.´,
+		title: 'Task Failed [' + error.plugin + ']',
+		message: lineNumber + ' See console.',
 		sound: 'Sosumi' // See: https://github.com/mikaelbr/node-notifier#all-notification-options-with-their-defaults
 	}).write( error );
 
